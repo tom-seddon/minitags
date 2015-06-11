@@ -1,0 +1,7 @@
+Should see both note and todo from the next line.
+
+NOTE note1 TODO todo1
+
+Should see only greedy_todo from the next line.
+
+NOTE note2 GREEDY_TODO greedy_todo1

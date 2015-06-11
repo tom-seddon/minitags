@@ -1,0 +1,21 @@
+This document has minitags markup, but it is neither in the first 10 lines nor
+the last 10 lines.
+3
+4
+5
+6
+7
+8
+9
+10
+minitags::::NOTE.regexp=^NOTE\::Wh+{.*}$
+-10
+-9
+-8
+-7
+-6
+-5
+-4
+-3
+-2
+-1

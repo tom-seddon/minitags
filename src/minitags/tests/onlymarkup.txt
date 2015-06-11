@@ -1,0 +1,5 @@
+minitags::::1.regexp=A
+minitags::::2.regexp=B
+minitags::::3.regexp=C
+minitags::::4.regexp=D
+minitags::::5.regexp=E

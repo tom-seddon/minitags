@@ -1,0 +1,178 @@
+* minitags
+
+minitags is a Visual Studio addin that finds particular strings, or
+"tags", in text files and presents them in an easy-to-use list. When
+you select one, it takes you to that string in the file.
+
+Use it navigate unwieldy C/C++ files that are poorly supported by
+existing code browsing functionality, such as those that contain large
+switch statements and lengthy functions divided up only by comments.
+But you can also use it to navigate scripting language code, INI
+files, and the like.
+
+For Visual Studio 2008 SP1, 2010, 2012 and 2013.
+
+* Installation
+
+Look in the =install= folder for the folder corresponding to your
+version of Visual Studio.
+
+Copy the contents of that folder - =minitags.Addin=, and the
+=minitags= folder - into a folder in your Documents folder, as per the
+following table. Create the =Addins= folder if it doesn't exist
+already.
+
+| VS Version | Folder                      |
+|------------+-----------------------------|
+| VS2008     | =Visual Studio 2008\Addins= |
+| VS2010     | =Visual Studio 2010\Addins= |
+| VS2012     | =Visual Studio 2012\Addins= |
+| VS2012     | =Visual Studio 2013\Addins= |
+
+Restart Visual Studio.
+
+* Using minitags
+
+** Quick introduction
+
+Once installed, minitags shows itself as a new entry on your =TOOLS=
+menu.
+
+[[./images/tools_menu.png]]
+
+To give it a trial run, open the file =examples\switch.c= from the
+repository. It consists of a function with an annoyingly large switch
+statement in it, and some markup at the top telling minitags how to
+find tags in this file.
+
+[[./images/switch.c.png]]
+
+Run minitags using the new =TOOLS=|=Browse minitags= option. The Tags
+Browser window will appear.
+
+[[.images/tags_browser.png]]
+
+Each item corresponds to one of the tags. Its name (in this case, the
+case value) is shown, along with its line. You can scroll through the
+tags browser window using the mouse or keyboard, and select the
+current item by double clicking or pressing Return.
+
+You can also type to narrow the list down. The search is done by
+substring. You could enter =1=, for example, to narrow the list down
+to only those tags whose names contain =1=:
+
+[[.images/tags_browser.1.png]]
+
+You can enter multiple substrings, separated by spaces. You could
+enter =1 s=, for example, to narrow the list down to only those tags
+whose names contain both =1= and =s=:
+
+[[.images/tags_browser.1.s.png]]
+
+Reckon you'll need a key for it? Well, you can do that. Its command
+name is =minitags.connect.BrowseMinitags=:
+
+[[./images/options_keyboard.png]]
+
+There are a couple more examples in the =examples= folder that you can
+try out.
+
+** Configuring minitags for a file
+
+To tell minitags how to find tags in a file, add some markup to the
+file, somewhere in the first or last 10 lines. (The markup can be
+anywhere on the line, so you can put it in comments.)
+
+The markup for each type of tag is of this form:
+
+: minitags::::NAME.regexp=REGEXP
+
+=NAME= is the name of this type of tag (as shown in the tags browser
+window), and =REGEXP= is the regular expression matching lines with
+this tag in it. If =REGEXP= has a capture group in it, the first
+capture group is shown as the name in the tags browser window;
+otherwise, the entire matching text is shown.
+
+The regular expression format is the same as that used by the Search
+dialog, with match case on and match whole word off, so you can test
+your regular expressions out first. (This is strongly recommended -
+I'll be the first to admit that the debugging experience is not
+great.)
+
+You can have several types of tag in one file. Give each one its own
+=minitags::::= line, and put all the lines together - minitags will
+stop looking when it reaches the first line that doesn't have a
+=minitags::::= in it.
+
+** Configuring minitags for types of files
+
+If you use the same tag types for multiple files (e.g., you're using
+it for browsing scripting language files, or INI files, etc.), you can
+store the tag types in an INI file instead, and have minitags look
+them up by file name pattern.
+
+To do this, create a file called =minitags.ini=, and put it in your
+Documents folder. Each section in your =minitags.ini= (which is just
+an ordinary-looking INI file) corresponds to one type of file, and its
+section name should be a pattern that matches files of that type. For
+example:
+
+: [*.ini]
+
+You can match multiple types of file by separating the patterns with
+=,=. For example:
+
+: [*.ini,*.cfg]
+
+In each section, list out the names and the regexps as you would in a
+source file, only without the =minitags::::= prefix. For example:
+
+: [*.ini,*.cfg]
+: section.regexp=^\[(.*)\]
+
+** More INI files
+
+As well as your personal =minitags.ini= in your Documents folder,
+=minitags.ini= files can go in the following places:
+
+- Same folder as current file
+
+- Same folder as project in current solution containing the current
+  file (if any)
+
+- Same folder as current solution (if any)
+
+(This is supposed to work sensibly with source control systems and
+projects with multiple participants.)
+
+minitags looks for =minitags.ini= starting with your Documents folder,
+and then the above, in that order. All entries from all INI files are
+used, with the first taking precedence if there are overlaps.
+
+* Building minitags
+
+minitags can be built with Visual Studio 2008 SP1. You'll also need
+[[http://www.microsoft.com/en-gb/download/details.aspx?id%3D21827][the Visual Studio 2008 SDK]], and (sorry...) GNU-style =cp= and =mkdir=
+on your PATH.
+
+Load the file =src\minitags\minitags.sln=.
+
+When you build, appropriate install folders will be created in
+=minitags\install\Release= (and, in =minitags\install\Debug=,
+inappropriate ones...), ready to be copied to =install= as desired.
+
+(A future version of the addin will have a less freakish build
+process.)
+
+* Bugs and stuff
+
+- minitags uses Visual Studio's built-in regexps, so the syntax is
+  different for Visual Studio 2008. This can cause difficulties if
+  you're trying to share files between multiple versions.
+
+  (A future version of the addin will fix this.)
+
+- Sometimes the minitags menu option can disappear. To fix this, quit
+  Visual Studio, then run it once with =devenv /resetAddin
+  minitags.connect=.
+

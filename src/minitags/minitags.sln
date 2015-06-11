@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "minitags", "minitags.csproj", "{D9542420-EC23-4384-AF91-ED0742BD6505}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5C0B924E-79CB-45FB-8F18-4403D3010E34} = {5C0B924E-79CB-45FB-8F18-4403D3010E34}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuickFind", "..\QuickFind\QuickFind.csproj", "{5C0B924E-79CB-45FB-8F18-4403D3010E34}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VSAddInLib", "..\VSAddinLib\VSAddInLib.csproj", "{6B289918-620F-4EEC-A96F-2F0A6DDF4077}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D9542420-EC23-4384-AF91-ED0742BD6505}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9542420-EC23-4384-AF91-ED0742BD6505}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9542420-EC23-4384-AF91-ED0742BD6505}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9542420-EC23-4384-AF91-ED0742BD6505}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C0B924E-79CB-45FB-8F18-4403D3010E34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C0B924E-79CB-45FB-8F18-4403D3010E34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C0B924E-79CB-45FB-8F18-4403D3010E34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C0B924E-79CB-45FB-8F18-4403D3010E34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B289918-620F-4EEC-A96F-2F0A6DDF4077}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B289918-620F-4EEC-A96F-2F0A6DDF4077}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B289918-620F-4EEC-A96F-2F0A6DDF4077}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B289918-620F-4EEC-A96F-2F0A6DDF4077}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
