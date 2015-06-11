@@ -50,7 +50,7 @@ find tags in this file.
 Run minitags using the new =TOOLS=|=Browse minitags= option. The Tags
 Browser window will appear.
 
-[[.images/tags_browser.png]]
+[[./images/tags_browser.png]]
 
 Each item corresponds to one of the tags. Its name (in this case, the
 case value) is shown, along with its line. You can scroll through the
@@ -61,13 +61,13 @@ You can also type to narrow the list down. The search is done by
 substring. You could enter =1=, for example, to narrow the list down
 to only those tags whose names contain =1=:
 
-[[.images/tags_browser.1.png]]
+[[./images/tags_browser.1.png]]
 
 You can enter multiple substrings, separated by spaces. You could
 enter =1 s=, for example, to narrow the list down to only those tags
 whose names contain both =1= and =s=:
 
-[[.images/tags_browser.1.s.png]]
+[[./images/tags_browser.1.s.png]]
 
 Reckon you'll need a key for it? Well, you can do that. Its command
 name is =minitags.connect.BrowseMinitags=:
